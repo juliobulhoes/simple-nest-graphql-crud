@@ -1,0 +1,83 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  token: String!
+  user: User!
+}
+
+input AuthInput {
+  email: String!
+}
+
+input CreateProductInput {
+  description: String!
+  name: String!
+  price: Int!
+}
+
+input CreateUserInput {
+  contactPhone: String!
+  email: String!
+  name: String!
+}
+
+input ListProductInput {
+  _id: ID
+  description: String
+  name: String
+  price: Int
+}
+
+input ListUserInput {
+  _id: ID
+  contactPhone: String
+  email: String
+  name: String
+}
+
+type Mutation {
+  createProduct(payload: CreateProductInput!): Product!
+  createUser(payload: CreateUserInput!): User!
+  deleteProduct(_id: ID!): Product!
+  login(data: AuthInput!): Auth!
+  updateProduct(payload: UpdateProductInput!): Product!
+  updateUser(payload: UpdateUserInput!): User!
+}
+
+type Product {
+  _id: ID!
+  description: String!
+  name: String!
+  price: Int!
+  userId: ID!
+}
+
+type Query {
+  product(_id: ID!): Product!
+  products(filters: ListProductInput): [Product!]!
+  user(_id: ID!): User!
+  users(filters: ListUserInput): [User!]!
+}
+
+input UpdateProductInput {
+  _id: ID!
+  description: String
+  name: String
+  price: Int
+}
+
+input UpdateUserInput {
+  _id: ID!
+  contactPhone: String
+  email: String
+  name: String
+}
+
+type User {
+  _id: ID!
+  contactPhone: String!
+  email: String!
+  name: String!
+}
